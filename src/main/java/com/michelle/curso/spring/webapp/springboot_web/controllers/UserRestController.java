@@ -2,6 +2,7 @@ package com.michelle.curso.spring.webapp.springboot_web.controllers;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,15 +30,17 @@ public class UserRestController {
 
         return userDto;
     }
+    @GetMapping(path="/list")
     public List<User> list(){
         User user = new User("Michelle", "Barriga");
         User user2 = new User("Pepe", "Doe");
         User user3 = new User("Juan", "Doe");
 
-        List<User> users = new ArrayList<>();
-        users.add(user);
-        users.add(user2);
-        users.add(user3);
+        List<User> users = Arrays.asList(user, user2, user3);
+        // List<User> users = new ArrayList<>();
+        // users.add(user);
+        // users.add(user2);
+        // users.add(user3);
 
         return users;
     }
