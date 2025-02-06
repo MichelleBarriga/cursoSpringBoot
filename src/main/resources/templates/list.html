@@ -8,6 +8,20 @@
 <body>
 
     <h1 th:text="${title}">Document</h1>
-    <div th:if="${users.size() == 0}" th:text="${'No tiene elementos usarios'}"></div>
+    <div th:if="${users.isEmpty()}" th:text="${'No tiene elementos usarios'}"></div>
+    <table>
+        <thead>
+|           <tr>name </tr>
+            <tr>apellido </tr>
+            <tr>email</tr>
+        </thead>
+        <tbody>
+            <tr th:each="user: ${users}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.lastname}"></td>
+                <td th:text="${user.email}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
