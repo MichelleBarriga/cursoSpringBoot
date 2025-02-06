@@ -8,6 +8,6 @@
 <body>
 
     <h1 th:text="${title}">Document</h1>
-    <div th:if="${users.size() == 0}">No tiene elementos usarios</div>
+    <div th:if="${users.size() == 0}" th:text="${'No tiene elementos usarios'}"></div>
 </body>
 </html>
