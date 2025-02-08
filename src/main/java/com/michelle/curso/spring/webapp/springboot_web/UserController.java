@@ -34,12 +34,11 @@ public class UserController {
     
     @ModelAttribute("users")
     public List<User> usersModel() {
-        List<User> users =  Arrays.asList(
+        return  Arrays.asList(
             new User("Pepa", "Gonzales", "pepa@gmail.com"),
             new User("Juan", "Perez", "juan@gmail.com"),
             new User("Lalo", "Perez"),
             new User("Andres", "Doe"));
-        return users;
     }
 
 }
