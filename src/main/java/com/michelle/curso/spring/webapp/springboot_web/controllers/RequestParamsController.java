@@ -19,5 +19,11 @@ public class RequestParamsController {
         param.setMessage(message);
         return param;
     }
-    
+    @GetMapping("/bar")
+    public ParamDto bar(@RequestParam String text, @RequestParam Integer code){
+        ParamDto params = new ParamDto();
+        params.setMessage(text);
+        params.setCode(code);
+        return params;
+    }
 }
