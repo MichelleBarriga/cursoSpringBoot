@@ -7,6 +7,7 @@ import com.michelle.curso.spring.webapp.springboot_web.models.User;
 import com.michelle.curso.spring.webapp.springboot_web.models.dto.ParamDto;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -29,11 +30,17 @@ public class PathVariableController {
     private String message;
 
     @Value("${config.listOfValues}")
-    private String[] listOfValues;
+    private List<String> listOfValues;
 
     @Value("${config.code}")
     private Integer code;
 
+    @Value("#{ '${config.listOfValues}'.toUpperCase().split(',') }")
+    private List<String> listOfValues2;
+
+    @Value("#{ '${config.listOfValues}'.toUpperCase() }")
+    private String valuesString;
+    
     @GetMapping("/baz/{message}")
     public ParamDto baz(@PathVariable String message) {
         ParamDto param = new ParamDto();
@@ -62,6 +69,8 @@ public class PathVariableController {
         json.put("username", username);
         json.put("message", message);
         json.put("listOfValues", listOfValues);
+        json.put("listOfValues2", listOfValues2);
+        json.put("valuesString", valuesString);
         json.put("code", code);
         return json;
     }
