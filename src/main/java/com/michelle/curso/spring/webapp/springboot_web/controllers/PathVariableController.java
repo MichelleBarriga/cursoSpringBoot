@@ -13,7 +13,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -41,6 +40,15 @@ public class PathVariableController {
     @Value("#{ '${config.listOfValues}'.toUpperCase() }")
     private String valuesString;
     
+    @Value("#{${config.valuesMap}}")
+    private Map<String, Object> valuesMap;
+
+    @Value("#{${config.valuesMap}.product}")
+    private String product;
+
+    @Value("#{${config.valuesMap}.price}")
+    private Long price;
+
     @GetMapping("/baz/{message}")
     public ParamDto baz(@PathVariable String message) {
         ParamDto param = new ParamDto();
@@ -72,6 +80,9 @@ public class PathVariableController {
         json.put("listOfValues2", listOfValues2);
         json.put("valuesString", valuesString);
         json.put("code", code);
+        json.put("valuesMap", valuesMap);
+        json.put("product", product);
+        json.put("price", price);
         return json;
     }
 }
